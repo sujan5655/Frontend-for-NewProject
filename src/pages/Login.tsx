@@ -1,4 +1,5 @@
-import React, { useState, type FormEvent } from "react";
+import { useState } from "react";
+import type { SyntheticEvent } from "react";
 import { useAppDispatch, useAppSelector } from "../service/hooks";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../auth/authThunk";
@@ -13,7 +14,7 @@ function Login() {
 
   const isLoading = status === "loading";
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
       const response = await dispatch(loginUser({ email, password })).unwrap();

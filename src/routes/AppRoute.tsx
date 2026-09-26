@@ -8,13 +8,20 @@ import BuyerDashboard from "../pages/buyer/BuyerDashboard";
 import SellerDashboard from "../pages/seller/SellerDashboard";
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import Register from "../pages/Register";
+import ProductDetailPage from "../pages/ProductDetail";
+import CartPage from "../pages/CartPage";
 
 function AppRoute() {
   return (
     <Routes>
       <Route element={<MainLayout />}>
         <Route path="/" element={<HomePage />} />
+        <Route
+          path="/product/:categorySlug/:productSlug"
+          element={<ProductDetailPage />}
+        />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/cart" element={<CartPage />} />
         <Route path="/services" element={<Services />} />
       </Route>
 

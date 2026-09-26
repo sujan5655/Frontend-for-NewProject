@@ -5,7 +5,7 @@ import {
   type RegisterCredentials,
   type LoginCredentials,
 } from "./authTypes";
-import axiosInstance from "../service/axios";
+import axiosInstance from "../service/axiosPublic";
 import axios from "axios";
 
 export const loginUser = createAsyncThunk<
@@ -40,6 +40,13 @@ export const registerUser = createAsyncThunk<
     } catch (error) {
       if (axios.isAxiosError(error)) {
         const data = error.response?.data;
+        if (data?.first_name) {
+          return rejectWithValue(data.first_name[0]);
+        }
+
+        if (data?.last_name) {
+          return rejectWithValue(data.last_name[0]);
+        }
         if (data?.email) {
           return rejectWithValue(data.email[0]);
         }
